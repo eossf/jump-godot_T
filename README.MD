@@ -1,10 +1,28 @@
 # Test simple jump
 
-Kinematic
+(official doc)
 
-Reminder (official doc)
+Godot offers four kinds of collision objects which all extend CollisionObject2D. 
+The last three listed below are physics bodies and additionally extend PhysicsBody2D.
 
-    Introduction
+    Area2D
+
+        Area2D nodes provide detection and influence. They can detect when objects overlap and can emit signals when bodies enter or exit. An Area2D can also be used to override physics properties, such as gravity or damping, in a defined area.
+
+    StaticBody2D
+
+        A static body is one that is not moved by the physics engine. It participates in collision detection, but does not move in response to the collision. They are most often used for objects that are part of the environment or that do not need to have any dynamic behavior.
+
+    RigidBody2D
+
+        This is the node that implements simulated 2D physics. You do not control a RigidBody2D directly, but instead you apply forces to it (gravity, impulses, etc.) and the physics engine calculates the resulting movement. Read more about using rigid bodies.
+
+    CharacterBody2D
+
+        A body that provides collision detection, but no physics. All movement and collision response must be implemented in code.
+
+
+Note about Kinematic engine
 
     Yes, the name sounds strange. "Kinematic Character". What is that? The reason for the name is that, when physics engines came out, they were called "Dynamics" engines (because they dealt mainly with collision responses). Many attempts were made to create a character controller using the dynamics engines, but it wasn't as easy as it seemed. Godot has one of the best implementations of dynamic character controller you can find (as it can be seen in the 2d/platformer demo), but using it requires a considerable level of skill and understanding of physics engines (or a lot of patience with trial and error).
 
@@ -35,7 +53,13 @@ TileMap :
 
 ## Physics
 
-Some physics properties and behaviors (linked to Object 2D) are directly managed by the engine. CharacterBody2D when is falling, hits the ground (TileMap), and is blocked. The collision with other Bodies, the dynamic properties are not managed (velocity, direction / rotation)
+Some physics properties and behaviors (linked to Object 2D) precisions:
+
+    CharacterBody2D when is falling, hits the ground (TileMap), and is blocked
+
+    The collision with other Bodies is not automatically managed ==> means you have to set collision shape and emit or read signals
+    
+    The dynamic properties (like velocity, direction / rotation) are not fully managed ==> means you have to set properties velocity, the engine moves only the object
 
 Other points, collision in the path of CharacterBody2D :
 
