@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://wpgsteht421n"]
+
+[ext_resource type="Texture2D" uid="uid://bu1l2bwlrxjcp" path="res://char.png" id="1_4wwal"]
+[ext_resource type="Script" path="res://player.gd" id="1_xkd5d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ihqdy"]
+radius = 26.0
+
+[node name="player" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_xkd5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_4wwal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_ihqdy")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[connection signal="timeout" from="Timer" to="CharacterBody2D" method="_on_timer_timeout"]
