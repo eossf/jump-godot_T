@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Test-jump-godot"
+config/name="jump-godot_T"
 run/main_scene="res://map.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"

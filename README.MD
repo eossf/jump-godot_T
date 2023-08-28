@@ -19,6 +19,8 @@ Reminder (official doc)
 
 ## Objects used
 
+This demo implements kinematic character engine.
+
 CharacterBody2D :
 
     is a specialized class for physics bodies that are meant to be user-controlled. They are not affected by physics at all, but they affect other physics bodies in their path.
@@ -27,13 +29,14 @@ CharacterBody2D :
     
     This makes it useful for highly configurable physics bodies that must move in specific ways and collide with the world, as is often the case with user-controlled characters.
 
-CollisionObject2D :
+TileMap :
 
-
+    Node for 2D tile-based maps. Tilemaps use a TileSet which contain a list of tiles which are used to create grid-based maps. A TileMap may have several layers, layouting tiles on top of each other.
 
 ## Physics
 
-Collision in the path of CharacterBody2D :
+Some physics properties and behaviors (linked to Object 2D) are directly managed by the engine. CharacterBody2D when is falling, hits the ground (TileMap), and is blocked. The collision with other Bodies, the dynamic properties are not managed (velocity, direction / rotation)
+
+Other points, collision in the path of CharacterBody2D :
 
     The physics engine can't handle scale on most types of shapes (only collision polygons, planes and segments work), so always change the parameters (such as radius) of the shape instead of scaling it. The same is also true for the kinematic/rigid/static bodies themselves, as their scale affects the shape scale.
-
