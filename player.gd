@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var GRAVITY = 50.0
+@export var GRAVITY_MAX = 500.0
 @export var WALK_SPEED = 300.0
 @onready var jump_timer = %Timer
 var gravity = GRAVITY
@@ -21,6 +22,7 @@ func _physics_process(delta):
 		jump_timer.start()
 	
 	velocity.y += gravity # linear acceleration
+	velocity.y = clamp(velocity.y, -GRAVITY_MAX, GRAVITY_MAX)
 	velocity.x = walk_speed
 	move_and_slide()
 
